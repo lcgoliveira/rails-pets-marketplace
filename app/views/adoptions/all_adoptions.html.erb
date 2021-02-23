@@ -1,0 +1,4 @@
+<h1> <%= "All adoptions by #{@user.name}:" %></h1>
+<ul>
+  <% @all_adoptions.each do |adoption| %>
+    <li><%= "#{adoption.pet.name}" %>
