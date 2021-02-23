@@ -1,3 +1,5 @@
-<h1>RailsPetsMarketplace </h1>
+<h1> RailsPetsMarketplace </h1>
 
-<%= render "shared/login" %>
+<% @pets.each do |pet| %>
+  <%= pet.name %>
+<% end %>

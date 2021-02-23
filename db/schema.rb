@@ -15,9 +15,21 @@ ActiveRecord::Schema.define(version: 2021_02_22_205450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "adoptions", force: :cascade do |t|
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "pet_id", null: false
+    t.text "content"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pet_id"], name: "index_adoptions_on_pet_id"
+    t.index ["user_id"], name: "index_adoptions_on_user_id"
+  end
+
   create_table "pets", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "type", null: false
+    t.string "animal_type", null: false
     t.string "name"
     t.integer "age"
     t.text "description", null: false
@@ -25,20 +37,6 @@ ActiveRecord::Schema.define(version: 2021_02_22_205450) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_pets_on_user_id"
-  end
-
-  create_table "transactions", force: :cascade do |t|
-    t.string "status"
-    t.bigint "donator_id", null: false
-    t.bigint "adoptor_id", null: false
-    t.bigint "pet_id", null: false
-    t.text "content"
-    t.integer "rating"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["adoptor_id"], name: "index_transactions_on_adoptor_id"
-    t.index ["donator_id"], name: "index_transactions_on_donator_id"
-    t.index ["pet_id"], name: "index_transactions_on_pet_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,8 +59,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_205450) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "adoptions", "pets"
+  add_foreign_key "adoptions", "users"
   add_foreign_key "pets", "users"
-  add_foreign_key "transactions", "pets"
-  add_foreign_key "transactions", "users", column: "adoptor_id"
-  add_foreign_key "transactions", "users", column: "donator_id"
 end
