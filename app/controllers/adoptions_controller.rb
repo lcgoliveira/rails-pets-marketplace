@@ -14,6 +14,7 @@ class AdoptionsController < ApplicationController
 
   def all_adoptions
     @all_adoptions = Adoption.where(user: params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   private
