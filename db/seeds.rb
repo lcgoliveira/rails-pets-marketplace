@@ -7,12 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require "faker"
-require "nokogiri"
 
-user = User.new(Faker::Name.first_name, Faker::Name.last_name, Faker::Internet.email, doc_cpf:"xxx.xxx.xxx-xx", address: Faker::Address.full_address)
-user.save
+puts "initiaizing seeding sequence"
+10.times do
+    pet = Pet.new({
+        animal_type: Faker::Creature::Animal.name,
+        name: Faker::Creature::Dog.name,
+        age: rand(1..20),
+        description: Faker::Creature::Dog.meme_phrase
+    })
 
-12.times do
-  pet = Pet.new(user_id: user.id, name: Faker::Name.first_name, animal_type: Faker::Creature::Dog, age: 1..18, description: Faker::Creature::Dog.breed)
-pet.save
-  
+    pet.user = User.find(1)
+    pet.save
+    puts "Pet created with the name \"#{pet.name}\" belonging to user \"#{User.find(1).id}\""
+end
+puts "ending seeding sequence"
+
