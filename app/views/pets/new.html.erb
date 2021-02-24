@@ -1,10 +1,21 @@
-<h1> You want to donate a pet? You're in the right place</h1>
 
-<%= simple_form_for(@pet) do |f| %>
-    <%= f.input :animal_type %>
-    <%= f.input :name %>
-    <%= f.input :age %>
-    <%= f.input :description %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit "Anunciar pet!" %>
-<% end %>
+<div class="container-fluid my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card p-3">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <h2 class="heading text-center">
+              Do you want to donate a pet ?<strong
+                >You're in the right place</strong
+              >
+            </h2>
+          </div>
+        </div>
+        <%= simple_form_for(@pet) do |f| %> <%= f.input :animal_type %> <%=
+        f.input :name %> <%= f.input :age %> <%= f.input :description %> <%=
+        f.submit "Anunciar pet!" %> <% end %>
+      </div>
+    </div>
+  </div>
+</div>
