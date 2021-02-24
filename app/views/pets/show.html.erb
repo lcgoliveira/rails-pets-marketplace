@@ -1,13 +1,27 @@
-<h1>This is the page of the pet: <%= @pet.name %> </h1>
+<div class="container-fluid my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card p-3">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <h1 class="heading text-center">
+              This is the page of the pet: <%= @pet.name %>
+            </h1>
 
-<h2>infos</h2>
+            <h2>infos</h2>
 
-<ul>
-<li>Tipo de pet: <%= @pet.animal_type %></li>
-<li>Dono (ID): <%= @pet.user.id %></li>
-<li>Idade: <%= @pet.age %></li>
-<li>Descrição: <%= @pet.description %></li>
-</ul>
+            <ul>
+              <li>Tipo de pet: <%= @pet.animal_type %></li>
+              <li>Dono (ID): <%= @pet.user.id %></li>
+              <li>Idade: <%= @pet.age %></li>
+              <li>Descrição: <%= @pet.description %></li>
+            </ul>
 
-<%= link_to "Adotar!", new_pet_adoption_path(pet_id: @pet.id) %>
-<%= link_to "Voltar!", root_path %>
+            <%= link_to "Adotar!", new_pet_adoption_path(pet_id: @pet.id) %> <%=
+            link_to "Voltar!", root_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
