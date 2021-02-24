@@ -1,0 +1,9 @@
+<h1> You want to donate a pet? You're in the right place</h1>
+
+<%= simple_form_for(@pet) do |f| %>
+    <%= f.input :animal_type %>
+    <%= f.input :name %>
+    <%= f.input :age %>
+    <%= f.input :description %>
+    <%= f.submit "Anunciar pet!" %>
+<% end %>
