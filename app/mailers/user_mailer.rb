@@ -8,12 +8,11 @@ class UserMailer < ApplicationMailer
   def adoption
     @pet = params[:pet]
     @adoption = params[:adoption]
-    @pet_owner = pet.user.name
-    @pet_name = pet.name
+    @pet_owner = @pet.user.first_name
+    @pet_name = @pet.name
     @greeting = "Hi"
     @message = @adoption.content
-    @user_name = current_user.name
-
-    mail to: @pet.user.email, subject: "#{@pet_owner} wants to adopt #{@pet_name}!"
+    @user_name = @adoption.user.first_name
+    mail to: @pet.user.email, subject: "#{@user_name} wants to adopt #{@pet_name}!"
   end
 end
