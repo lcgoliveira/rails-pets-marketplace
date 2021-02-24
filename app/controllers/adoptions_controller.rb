@@ -11,7 +11,7 @@ class AdoptionsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
 
     if @adoption.save
-      mail = RestaurantMailer.with(pet: @pet, adoption: @adoption).create_confirmation
+      mail = UserMailer.with(pet: @pet, adoption: @adoption).create_confirmation
       mail.deliver_now
       redirect_to pet_path(@pet)
     else
