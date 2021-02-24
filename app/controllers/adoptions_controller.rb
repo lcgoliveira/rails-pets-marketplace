@@ -8,8 +8,15 @@ class AdoptionsController < ApplicationController
 
   def create
     @adoption = Adoption.new(adoption_params)
-
     @pet = Pet.find(params[:pet_id])
+
+    if @adoption.save
+      mail = RestaurantMailer.with(pet: @pet, adoption: @adoption).create_confirmation
+      mail.deliver_now
+      redirect_to pet_path(@pet)
+    else
+      render :new
+    end
   end
 
   def all_adoptions
@@ -17,19 +24,6 @@ class AdoptionsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-  def contact_owner
-    user_email = current_user.email
-    receiver = Pet.find(params[:user_id])
-    receiver_email = User.where(user_id = receiver).email
-    mail = Mail.new do
-    from    'user_email'
-    to      'receiver_email'
-    subject 'User wants to adopt your pet'
-    body    File.read('body.txt')
-end
-
-mail.to_s #=> "From: mikel@test.lindsaar.net\r\nTo: you@...
-  end
 
   private
 
