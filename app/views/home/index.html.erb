@@ -1,9 +1,57 @@
-<h1> RailsPetsMarketplace </h1>
+<div class="container mt-3">
+  <div id="typed-strings">
+    <h1 class="overflow-hidden">Adopt a Pet</h1>
+    <h1 class="overflow-hidden">Donate a Pet</h1>
+  </div>
+  <h1 class="text-center typed-font" id="typed"></h1>
+  <!-- <script>
+    var typed = new Typed('#typed', {
+      stringsElement: '#typed-strings',
+      typeSpeed: 50,
+      backSpeed: 50,
+      smartBackspace: true,
+      showCursor: false,
+    });
+  </script> -->
 
-<ul>
-  <% @pets.each do |pet| %>
-    <li>
-      <%= link_to pet.name, pet_path(pet.id) %>
-    </li>
-  <% end %>
-</ul>
+  <div class="cards">
+    <div class="card-category"
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://super.abril.com.br/wp-content/uploads/2016/12/gato11.jpg?quality=70&strip=all)">
+      Breakfast
+    </div>
+
+    <div class="card-category"
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEYSndkMT10B_Go7psS6GCljNw-3dbMjWtOQ&usqp=CAU)">
+      Lunch
+    </div>
+
+    <div class="card-category"
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://super.abril.com.br/wp-content/uploads/2016/12/gato11.jpg?quality=70&strip=all)">
+      Dinner
+    </div>
+    <div class="card-category"
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      Breakfast
+    </div>
+    <div class="card-category"
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://super.abril.com.br/wp-content/uploads/2016/12/gato11.jpg?quality=70&strip=all)">
+      Breakfast
+    </div>
+    <div class="card-category"
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      Breakfast
+    </div>
+    <div class="card-category"
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://super.abril.com.br/wp-content/uploads/2016/12/gato11.jpg?quality=70&strip=all)">
+      Breakfast
+    </div>
+    <div class="card-category"
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://super.abril.com.br/wp-content/uploads/2016/12/gato11.jpg?quality=70&strip=all)">
+      Breakfast
+    </div>
+    <div class="card-category"
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      Breakfast
+    </div>
+  </div>
+</div>
