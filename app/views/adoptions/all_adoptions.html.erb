@@ -1,5 +1,12 @@
 <h1> <%= "All adoptions by #{@user.name}:" %></h1>
-<ul>
+<%= button_to "back", user_path(@user), method: :get, class: "btn btn-primary" %>
+<% if @all_adoptions.empty? %>
+  <%= "There have been no prior adoptions by #{@user.name.}"  %>
+<% else %>
+  <ul>
   <% @all_adoptions.each do |adoption| %>
-    <li><%= "#{adoption.pet.name}" %>
-  <% end %>
+    <% adoption.concluded?%>
+      <li><%= "#{adoption.pet.name}, adopted by: #{adoption.user_id} on #{adoption.concluded_at}." %></li>
+    <% end %>
+  </ul>
+<% end %>
