@@ -1,0 +1,12 @@
+<h1>Want to edit your pet? You're in the right place!</h1>
+
+<h2>Editing pet: <%= @pet.name %></h2>
+
+<%= simple_form_for(@pet) do |f| %>
+    <%= f.input :animal_type %>
+    <%= f.input :name %>
+    <%= f.input :age %>
+    <%= f.input :description %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Edite meu pet!" %>
+<% end %>
