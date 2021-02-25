@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <% @user.adoptions.each do |adoption| %>
-        <% unless adoption.concluded? %>
+        <% if adoption.concluded? %>
           <tr>
           <td><%= adoption.pet.name %></td>
           <td><%= adoption.concluded_at %></td>
