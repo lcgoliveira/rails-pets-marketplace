@@ -14,7 +14,7 @@
   <div class="py-1">
     <% @pets.each do |pet| %>
       <div class="card-trip py-2 my-2">
-        <img src="<%= pet.image %>"/>
+        <img class="image-cover" src="<%= cl_image_path pet.photo.key %>"/>
         <div class="card-trip-infos">
           <div>
             <h2><%=pet.animal_type%></h2>
