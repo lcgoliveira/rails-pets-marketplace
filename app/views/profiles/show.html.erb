@@ -9,34 +9,44 @@
     <p>  </p>
     <%= button_to "previous adoptions", user_all_adoptions_path(current_user), method: :get, class: "btn btn-flat" %>
   </div>
+</div>
   <div>
-    <% if @adoptions == nil %>
-      <p>You do not have any pending adoption requests.</p>
+    <% if @pets_adoptions.empty? %>
+      <div class="alert alert-secondary" role="alert">You do not have any pending adoption requests.</div>
     <% else %>
-      <p><strong>You have a pending adoption request</strong></p>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">pet name</th>
-                <th scope="col">requested by</th>
-                <th scope="col">e-mail</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @adoptions.each do |adoption| %>
-                  <tr>
-                    <td><%= adoption.pet.name %></td>
-                    <td><%= adoption.user.first_name %></td>
-                    <td><%= adoption.user.email %></td>
-                    <td><%= link_to "check request", user_adoption_show_path(adoption), method: :get %></td>
-                  </tr>
+      <div class="container" style="mt-3">
+        <p> </p>
+        <p> </p>
+        <p> </p>
+        <div class="alert alert-danger" role="alert">You have a pending adoption request!</div>
+        <p class="h4">Pending adoption requests</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">pet name</th>
+              <th scope="col">requested by</th>
+              <th scope="col">e-mail</th>
+              <th scope="col">message</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @pets_adoptions.each do |pet_adoption| %>
+              <% pet_adoption.each do |adoption| %>
+                <tr>
+                  <td><%= adoption.pet.name %></td>
+                  <td><%= adoption.user.first_name %></td>
+                  <td><%= adoption.user.email %></td>
+                  <td><%= adoption.content %></td>
+                  <td><%= link_to "check request", user_adoption_show_path(adoption), method: :get %></td>
+                </tr>
               <% end %>
-            </tbody>
-          </table>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     <% end %>
   </div>
-</div>
 <div class="container d-flex justify-content-around flex-wrap show my-5">
  <% @user.pets.each do |pet| %>
   <div class="card text-dark mb-3" id="card-description" style="max-width: 30rem;">

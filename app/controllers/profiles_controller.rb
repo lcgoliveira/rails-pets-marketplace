@@ -3,9 +3,6 @@ class ProfilesController < ApplicationController
 
   def show
     @user = current_user
-    # @user_id = @user[:id]
-    # @pets = Pet.where(user_id: @user_id)
-
   end
 
   def all_adoptions
@@ -19,11 +16,9 @@ class ProfilesController < ApplicationController
   private
 
   def set_adoption_requests
-    @adoptions = []
-    pets = Pet.where(user_id: current_user[:id])
-    pets.each do |pet|
-      @adoptions << Adoption.where(pet_id: pet[:id])
+    pets = current_user.pets
+    @pets_adoptions = pets.map do |pet|
+      Adoption.where(pet_id: pet[:id])
     end
   end
-
 end
