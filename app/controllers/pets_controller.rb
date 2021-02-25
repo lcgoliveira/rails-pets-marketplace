@@ -22,6 +22,10 @@ class PetsController < ApplicationController
     end
   end
 
+  def edit
+    @pet = Pet.find(params[:id])
+  end
+
   def update
     @pet = Pet.find(params[:id])
     @pet.update(pets_params)
@@ -29,11 +33,11 @@ class PetsController < ApplicationController
     if @pet.save
       redirect_to pet_path(@pet.id)
     else
-      render :show
+      render :edit
     end
   end
 
   def pets_params
-    params.require(:pet).permit(:animal_type, :name, :age, :description)
+    params.require(:pet).permit(:animal_type, :name, :age, :description, :photo)
   end
 end
