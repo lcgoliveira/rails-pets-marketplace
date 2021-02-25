@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
   end
 
   def adoption_show
-    @adoption = Adoption.find(params[:id])
+    @adoption = Adoption.find(params[:user_id])
   end
 
   private
@@ -21,4 +21,9 @@ class ProfilesController < ApplicationController
       Adoption.where(pet_id: pet[:id])
     end
   end
+
+  def adoption_params
+    params.require(:adoption).permit(:id)
+  end
+
 end

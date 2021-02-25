@@ -8,14 +8,16 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
+import initModal from '../components/modal.js'
 
 Rails.start()
 Turbolinks.start()
-ActiveStorage.start() 
+ActiveStorage.start()
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   // [...]
+  initModal();
   loadDynamicBannerText();
 });
 

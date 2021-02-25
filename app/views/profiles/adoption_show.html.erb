@@ -1,3 +1,50 @@
-<p>Pet name: <%= @adoption.pet.name  %></p>
-<p>Requested by: <%= @adoption.user.first_name %></p>
-<p>e-mail: <%= @adoption.user.email %></p>
+<div class="container mt-2">
+  <% if @adoption.user.first_name != nil  %>
+    <h4>Adoption request by <%= @adoption.user.first_name %></h4>
+  <% else %>
+    <h4>Adoption request by <%= @adoption.user.email %>"</h4>
+  <% end %>
+
+  <ul class="list-group">
+    <li class="list-group-item">Pet name: <%= @adoption.pet.name  %></li>
+    <li class="list-group-item">Request initiated by: <%= @adoption.user.first_name %> <%= @adoption.user.first_name %></li>
+    <li class="list-group-item">e-mail: <%= @adoption.user.email %></li>
+    <li class="list-group-item">Date of request: <%= @adoption.created_at %></li>
+    <li class="list-group-item">Message: <%@adoption.content%></li>
+  </ul>
+</div>
+<div class="container mt-2">
+  <div class="container_adoption_show">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="width: 180px;">reply</button>
+    <button type="button" class="btn btn-success" style="width: 180px;">confirm adoption</button>
+    <button type="button" class="btn btn-danger" style="width: 180px;">refuse adoption</button>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">reply to adoption request</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">With textarea</span>
+          </div>
+          <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">send message</button>
+      </div>
+    </div>
+  </div>
+</div>
