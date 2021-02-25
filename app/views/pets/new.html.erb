@@ -13,10 +13,12 @@
           </div>
         </div>
         <%= simple_form_for(@pet) do |f| %> <%= f.input :animal_type %> <%=
-        f.input :name %> <%= f.input :age %> <%= f.input :description %>
-        <%= f.input :photo, as: :file %>
-        <%= f.submit "Anunciar pet!" %> <% end %>
+
+        f.input :name %> <%= f.input :age %> <%= f.input :description %> <%=
+        f.submit "Anunciar pet", class: "btn btn-flat" %> <% end %>
+
       </div>
     </div>
   </div>
 </div>
+

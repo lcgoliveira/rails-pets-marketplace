@@ -10,6 +10,7 @@
     <%= button_to "previous adoptions", user_all_adoptions_path(current_user), method: :get, class: "btn btn-flat" %>
   </div>
 </div>
+
   <div>
     <% if @pets_adoptions.empty? %>
       <div class="alert alert-secondary" role="alert">You do not have any pending adoption requests.</div>
@@ -52,6 +53,7 @@
   <div class="card text-dark mb-3" id="card-description" style="max-width: 30rem;">
     <div class="card-body">
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pet.photo.key, height: 300, crop: :fill if pet.photo.attached? %>')">
+
     </div>
       <h3 class="card-title">Pet</h3>
       <div class="d-flex flex-column bd-highlight">
