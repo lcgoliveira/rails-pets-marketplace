@@ -5,6 +5,7 @@
          <p><%=current_user.date_of_birth%></p>
          <p><%=current_user.address%></p>
          <p><%=current_user.email%></p>
+         <p><%=current_user.description%></p>
     <a class="btn btn-flat" href="#">Adopt a pet!</a>
     <p>  </p>
     <%= button_to "previous adoptions", user_all_adoptions_path(current_user), method: :get, class: "btn btn-flat" %>
