@@ -1,22 +1,20 @@
-<h1> <%= "All adoptions by #{@user.name}:" %></h1>
+<h1> <%= "All adoptions by #{@user.email}:" %></h1>
 <%= button_to "back", user_path(@user), method: :get, class: "btn btn-primary" %>
-<% if @all_adoptions.empty? %>
-  <p><%= "There have been no prior adoptions by #{@user.name.}" %></p>
+<% if @user.adoptions.empty? %>
+  <p><%= "There have been no prior adoptions by #{@user.email}" %></p>
 <% else %>
   <table class="table">
     <thead>
       <tr>
         <th scope="col">pet name</th>
-        <th scope="col">adopted by</th>
         <th scope="col">adoption date</th>
       </tr>
     </thead>
     <tbody>
-      <% @all_adoptions.each do |adoption| %>
-        <% if adoption.concluded? %>
+      <% @user.adoptions.each do |adoption| %>
+        <% unless adoption.concluded? %>
           <tr>
           <td><%= adoption.pet.name %></td>
-          <td><%= adoption.pet.user_id %></td>
           <td><%= adoption.concluded_at %></td>
           </tr>
         <% end %>
