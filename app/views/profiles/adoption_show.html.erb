@@ -22,7 +22,6 @@
 </div>
 
 
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -33,18 +32,19 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">With textarea</span>
+      <%= form_tag reply_path(@adoption), method: :post do %>
+        <div class="modal-body">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">With textarea</span>
+            </div>
+            <textarea class="form-control" name="reply_message" aria-label="With textarea"></textarea>
           </div>
-          <textarea class="form-control" aria-label="With textarea"></textarea>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">send message</button>
-      </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" value="send message">
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

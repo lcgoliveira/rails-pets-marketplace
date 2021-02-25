@@ -13,6 +13,15 @@ class ProfilesController < ApplicationController
     @adoption = Adoption.find(params[:user_id])
   end
 
+  def reply_request
+    @adoption = Adoption.find(params[:id])
+    @message = params[:reply_message]
+    mail = UserMailer.with(message: @message, adoption: @adoption).reply
+    mail.deliver_now
+    render :adoption_show, notice: "reply sent"
+  end
+
+
   private
 
   def set_adoption_requests
@@ -26,4 +35,11 @@ class ProfilesController < ApplicationController
     params.require(:adoption).permit(:id)
   end
 
+  # def adoption_edit
+
+  # end
+
+  # def adoption_update
+
+  # end
 end
