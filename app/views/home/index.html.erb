@@ -6,6 +6,7 @@
         <p>
           <span id="banner-typed-text"></span>
         </p>
+        <h5>If you are a pet lover you are in the right place</h5>
         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary"  %>
       </div>
     </div>
@@ -15,7 +16,7 @@
     <% @pets.each do |pet| %>
       <a href="<%= "/pets/#{pet.id}" %>">
         <div class="card-category"
-          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pet.photo.key, height: 300, crop: :fill if pet.photo.attached? %>')"> 
+          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pet.photo.key, height: 300, crop: :fill if pet.photo.attached? %>')">
           <%= pet.name %>
         </div>
       </a>
