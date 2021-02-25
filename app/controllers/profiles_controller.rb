@@ -21,6 +21,31 @@ class ProfilesController < ApplicationController
     render :adoption_show, notice: "reply sent"
   end
 
+  def adoption_confirm
+    @adoption = Adoption.find(params[:id])
+    @adoption.status = 'confirmed'
+    @adoption.concluded = 'true'
+    @adoption.concluded_at = Date.today
+    if @adoption.save
+      redirect_to profiles_path, notice: "adoption confirmed, transaction concluded"
+    else
+      render :adoption_show, notice: "adoption couldn`t be confirmed, please try again"
+    end
+  end
+
+  def adoption_refuse
+    @adoption = Adoption.find(params[:id])
+    @adoption.status = 'refused'
+    @adoption.concluded = 'true'
+    @adoption.concluded_at = Date.today
+    if @adoption.save
+      redirect_to profiles_path, notice: "adoption refused, transaction concluded"
+    else
+      render :adoption_show, notice: "adoption couldn`t be refused, please try again"
+    end
+  end
+
+
 
   private
 
@@ -34,12 +59,4 @@ class ProfilesController < ApplicationController
   def adoption_params
     params.require(:adoption).permit(:id)
   end
-
-  # def adoption_edit
-
-  # end
-
-  # def adoption_update
-
-  # end
 end
