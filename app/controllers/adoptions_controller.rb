@@ -18,11 +18,6 @@ class AdoptionsController < ApplicationController
     end
   end
 
-  def all_adoptions
-    @user = User.where(email: params[:email])
-    @all_adoptions = Adoption.where(user_id: @user[:id])
-  end
-
   private
 
   def adoption_params
