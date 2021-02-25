@@ -17,16 +17,16 @@
 
             <h2>infos</h2>
 
-            <ul>
-              <li>Tipo de pet: <%= @pet.animal_type %></li>
-              <li>Dono (ID): <%= @pet.user.id %></li>
-              <li>Idade: <%= @pet.age %></li>
-              <li>Descrição: <%= @pet.description %></li>
+            <ul class="list-group">
+              <li class="list-group-item">Tipo de pet: <%= @pet.animal_type %></li>
+              <li class="list-group-item">Dono (ID): <%= @pet.user.id %></li>
+              <li class="list-group-item">Idade: <%= @pet.age %></li>
+              <li class="list-group-item">Descrição: <%= @pet.description %></li>
             </ul>
 
-            <%= link_to "Adotar!", new_pet_adoption_path(pet_id: @pet.id) %> <%=
-            link_to "Voltar!", root_path %>
-            <%= link_to "Editar pet! (testes)", edit_pet_path(@pet.id) %>
+            <%= link_to "Adotar", new_pet_adoption_path(pet_id: @pet.id), class: "btn btn-flat my-3" %> <%=
+            link_to "Voltar", root_path, class: "btn btn-flat" %>
+            <%= link_to "Editar pet", edit_pet_path(@pet.id), class: "btn btn-flat" %>
           </div>
         </div>
       </div>
