@@ -14,10 +14,11 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   // [...]
-  initModal();
+  // initModal();
   loadDynamicBannerText();
 });
 
