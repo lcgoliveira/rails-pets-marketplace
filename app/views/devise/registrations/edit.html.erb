@@ -21,13 +21,17 @@
             Currently waiting confirmation for: <%= resource.unconfirmed_email
             %>
           </p>
-          <% end %> <%= f.input :password, hint: "leave it blank if you don't
-          want to change it" , required: false, input_html: { autocomplete:
-          "new-password" } %> <%= f.input :password_confirmation, required:
-          false, input_html: { autocomplete: "new-password" } %> <%= f.input
-          :current_password, hint: "we need your current password to confirm
-          your changes" , required: true, input_html: { autocomplete:
-          "current-password" } %>
+          <% end %> 
+          <%= f.input :first_name, required: true, autofocus: true, placeholder: "Ronaldo" %>
+          <%= f.input :last_name, required: true, autofocus: true, placeholder: "bilha muito" %>
+          <%= f.input :date_of_birth, required: true, autofocus: true %>
+          <%= f.input :doc_cpf, required: true, autofocus: true, placeholder: "Somente números" %>
+          <%= f.input :description, required: true, autofocus: true, placeholder: "Sou o Ronaldo, brilho muito no <insira seu time>" %>
+          <%= f.input :address, required: true, autofocus: true, placeholder: "Rua brilhante N 123" %>
+          <%= f.input :photo, as: :file %>
+          <%= f.input :password, hint: "leave it blank if you don't want to change it" , required: false, input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation, required: false, input_html: { autocomplete: "new-password" } %>
+          <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { autocomplete: "current-password" } %>
         </div>
 
         <div class="form-actions"><%= f.button :submit, "Update" %></div>
