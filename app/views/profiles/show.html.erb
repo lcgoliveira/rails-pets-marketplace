@@ -43,8 +43,7 @@
                 </tr>
               </thead>
               <tbody>
-                <% @pets_adoptions.each do |pet_adoption| %>
-                  <% pet_adoption.each do |adoption| %>
+                <% @pets_adoptions.each do |adoption| %>
                     <tr>
                       <td><%= adoption.pet.name %></td>
                       <td><%= adoption.user.first_name %></td>
@@ -52,7 +51,6 @@
                       <td><%= adoption.content %></td>
                       <td><%= link_to "check request", user_adoption_show_path(user_id: adoption.id), method: :get %></td>
                     </tr>
-                  <% end %>
                 <% end %>
               </tbody>
             </table>
