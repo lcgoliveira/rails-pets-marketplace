@@ -12,30 +12,15 @@
       </div>
     </div>
   </div>
-
-  <div class="container mt-5" style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-
-    <% @pets.each do |pet| %>
-
-      <div style="width: 300px; height 100%; background-image: url("https://placedog.net/640/480?random")>
-      </div>
-      <div class="card-trip" style="width: 300px; height: 200px;">
-        <div class="card-trip-infos">
-          <div>
-            <h5 style="font-weight: bold; font-size: 30; text-align: center;"><%=pet.animal_type%></h5>
-            <p><%=pet.description%></p>
+  <div class="container mt-5">
+    <div class="cards">
+      <% @pets.each do |pet| %>
+        <a href="<%= " /pets/#{pet.id}" %>">
+          <div class="card-category"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pet.photo.key, height: 300, crop: :fill if pet.photo.attached? %>')">
+            <%= pet.name %>
           </div>
-          <h5 style="font-weight: bold; font-size: 24;"><%= "owner: #{pet.user.first_name}" %></h5>
-          <h5 style="font-weight: bold; font-size: 24;"><%= "address: #{pet.user.address}" %></h5>
-        </div>
-      </div>
-
-    <% end %>
+        </a>
+        <% end %>
+    </div>
   </div>
-</div>
-
-
-
-
-
-</div>
