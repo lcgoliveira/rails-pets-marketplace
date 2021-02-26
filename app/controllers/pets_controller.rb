@@ -16,6 +16,9 @@ class PetsController < ApplicationController
     @pet.user = current_user
 
     if @pet.save
+      unless @pet.photo.attached?
+        @pet.photo.attach(io: open('app/assets/images/default pet photo.jpg'), filename: 'nes.png', content_type: 'image/jpg')
+      end
       redirect_to pet_path(@pet.id)
     else
       render :new
