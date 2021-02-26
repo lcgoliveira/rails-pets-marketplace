@@ -5,9 +5,9 @@
     <p><%=current_user.date_of_birth%></p>
     <p><%=current_user.address%></p>
     <p><%=current_user.email%></p>
-    <a class="btn btn-flat" href="#">Adopt a pet!</a>
+    <a class="btn btn-success" href="#">Adopt a pet!</a>
     <p>  </p>
-    <%= button_to "previous adoptions", user_all_adoptions_path(current_user), method: :get, class: "btn btn-flat" %>
+    <%= button_to "previous adoptions", user_all_adoptions_path(current_user), method: :get, class: "btn btn-success" %>
   </div>
 </div>
 
@@ -39,7 +39,7 @@
                   <td><%= adoption.user.first_name %></td>
                   <td><%= adoption.user.email %></td>
                   <td><%= adoption.content %></td>
-                  <td><%= link_to "check request", user_adoption_show_path(user_id: adoption.id), method: :get %></td>
+                  <td><%= link_to "check request", user_adoption_show_path(user_id: adoption.id), method: :get, class: "btn btn-success" %></td>
                 </tr>
               <% end %>
             <% end %>
