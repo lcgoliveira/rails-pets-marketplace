@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
+
+  root to: 'home#index'
+
   devise_for :users
 
   resources :users do
     get '/all_adoptions', to: "profiles#all_adoptions", as: :all_adoptions
     get '/adoption_show', to: "profiles#adoption_show", as: :adoption_show
-    get '/adoption_show/edit_adoption', to: "profiles#adoption_edit", as: :adoption_edit
-    patch '/adoption_show/edit_adoption', to: "profiles#adoption_update", as: :adoption_update
+    # get '/adoption_show/edit_confirm_adoption', to: "profiles#confirm_adoption_edit", as: :confirm_adoption_edit
+    post '/adoption_confirm/:id', to: "profiles#adoption_confirm", as: :adoption_confirm
+    post '/adoption_refuse/:id', to: "profiles#adoption_refuse", as: :adoption_refuse
+
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'home#index'
 
   resources :pets do
     resources :adoptions, only: [:new, :create]

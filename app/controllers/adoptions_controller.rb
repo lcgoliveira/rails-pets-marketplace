@@ -17,14 +17,6 @@ class AdoptionsController < ApplicationController
     end
   end
 
-  # def reply_request
-  #   @adoption = Adoption.find(params[:id])
-  #   @message = params[:reply_message]
-  #   mail = UserMailer.with(message: @message, adoption: @adoption).reply
-  #   mail.deliver_now
-  #   redirect_to user_adoption_show_path notice: "reply sent"
-  # end
-
   private
 
   def adoption_params

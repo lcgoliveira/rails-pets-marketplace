@@ -5,30 +5,28 @@
       <div class="card p-3">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h1 class="heading text-center">
-              This is the page of the pet: <%= @pet.name %>
-            </h1>
+            <h1 class="heading text-center">Hello, I`m: <%= @pet.name.capitalize %>!</h1>
 
             <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @pet.photo.key, crop: :fill, gravity: :face if @pet.photo.attached? %>);">
               <div class="container">
-                <h1>Meet <%= @pet.name %> </h1>
+                <h1 style="color: grey; text-align: center">meet <%= @pet.name %> </h1>
               </div>
             </div>
-
-            <h2>infos</h2>
+            <p></p>
+            <h5>about <%= @pet.name.capitalize %>:</h5>
 
             <ul class="list-group">
-              <li class="list-group-item">Tipo de pet: <%= @pet.animal_type %></li>
-              <li class="list-group-item">Dono (ID): <%= @pet.user.id %></li>
-              <li class="list-group-item">Idade: <%= @pet.age %></li>
-              <li class="list-group-item">Descrição: <%= @pet.description %></li>
+              <li class="list-group-item">type: <%= @pet.animal_type %></li>
+              <li class="list-group-item">owner: <%= @pet.user.first_name%></li>
+              <li class="list-group-item">age: <%= @pet.age %></li>
+              <li class="list-group-item">more: <%= @pet.description %></li>
             </ul>
 
-
-            <%= link_to "Adotar", new_pet_adoption_path(pet_id: @pet.id), class: "btn btn-flat my-3" %> <%=
-            link_to "Voltar", root_path, class: "btn btn-flat" %>
-            <%= link_to "Editar pet", edit_pet_path(@pet.id), class: "btn btn-flat" %>
-
+            <div style="display: flex; justify-content: space-evenly; align-items: center;">
+              <%= link_to "adopt", new_pet_adoption_path(pet_id: @pet.id), class: "btn btn-success", style: "width: 100px; margin: 15px;" %>
+              <%= link_to "back", root_path, class: "btn btn-success", style: "width: 100px; margin: 15px;" %>
+              <%= link_to "edit", edit_pet_path(@pet.id), class: "btn btn-success", style: "width: 100px; margin: 15px;" %>
+            </div>
           </div>
         </div>
       </div>
