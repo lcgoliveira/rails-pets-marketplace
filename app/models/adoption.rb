@@ -3,5 +3,6 @@ class Adoption < ApplicationRecord
   belongs_to :pet
 
   validates :content, presence: true
- # validates :user_id, uniqueness: { scope: :pet_id }
+  validates :status, inclusion: { in: %w(open confirmed refused),
+    message: "%{value} is not a valid status" }
 end

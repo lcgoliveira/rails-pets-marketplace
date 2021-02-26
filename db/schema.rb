@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_014742) do
+ActiveRecord::Schema.define(version: 2021_02_26_011418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,15 +37,14 @@ ActiveRecord::Schema.define(version: 2021_02_25_014742) do
   end
 
   create_table "adoptions", force: :cascade do |t|
-    t.string "status"
     t.bigint "user_id", null: false
     t.bigint "pet_id", null: false
-    t.text "content"
-    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "concluded", default: false
     t.date "concluded_at"
+    t.string "status", default: "open"
+    t.text "content", null: false
     t.index ["pet_id"], name: "index_adoptions_on_pet_id"
     t.index ["user_id"], name: "index_adoptions_on_user_id"
   end

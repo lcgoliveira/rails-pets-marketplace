@@ -1,28 +1,42 @@
-<h1> <%= "All adoptions by #{@user.email}:" %></h1>
-<%= button_to "back", user_path(@user), method: :get, class: "btn btn-success" %>
-<% if @user.adoptions.empty? %>
-  <p><%= "There have been no prior adoptions by #{@user.email}" %></p>
-<% else %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">pet name</th>
-        <th scope="col">adoption date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @user.adoptions.each do |adoption| %>
-        <% if adoption.concluded? %>
-          <tr>
-          <td><%= adoption.pet.name %></td>
-          <td><%= adoption.concluded_at %></td>
-          </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
 
+<div class="container mt-3">
+  <h4> <%= "All pets offered for adoption by #{@user.first_name} #{@user.last_name}:" %></h4>
+  <p></p>
+  <p></p>
+  <% if @user.adoptions.empty? %>
+    <p><%= "There have been no prior adoptions by #{@user.email}" %></p>
+  <% else %>
+    <table class="table">
+      <thead class="bg-success">
+        <tr>
+          <th scope="col">pet name:</th>
+          <th scope="col">pet type:</th>
+          <th scope="col">adoption offered on:</th>
+          <th scope="col">adoption requested by:</th>
+          <th scope="col">adoption status:</th>
+          <th scope="col">adoption date:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.adoptions.each do |adoption| %>
+          <% if adoption.concluded? %>
+            <tr>
+            <td><%= adoption.pet.name %></td>
+            <td><%= adoption.pet.animal_type %></td>
+            <td><%= adoption.created_at %></td>
+            <td><%= adoption.user.first_name %></td>
+            <td><%= adoption.status %></td>
+            <td><%= adoption.concluded_at %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <p></p>
+  <p></p>
+  <%= button_to "back", user_path(@user), method: :get, class: "btn btn-success", style: "width: 160px;"%>
+</div>
 
 
 
