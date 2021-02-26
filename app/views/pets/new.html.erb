@@ -13,7 +13,11 @@
           <%=f.input :name %>
           <%= f.input :age %>
           <%= f.input :description %>
-          <div style="display: flex; justify-content: center;"><%=f.submit "post", class: "btn btn-success", style: "width: 160px;"%></div>
+          <%= f.input :photo, as: :file %>
+          <div style="display: flex; justify-content: space-between;">
+            <a class="btn btn-success mx-2" href="/">Back</a>
+            <%=f.submit "Find my pet an owner!", class: "btn btn-success mx-2", style: "width: auto;"%>
+          </div>
         <% end %>
       </div>
     </div>
