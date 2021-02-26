@@ -1,9 +1,18 @@
 .avatar {
   width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 .avatar-large {
   width: 56px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.avatar-very-large-bordered {
+  width: 280px;
+  height: 280px;
+  border: white 2px solid;
   border-radius: 50%;
 }
 .avatar-bordered {

@@ -1,5 +1,4 @@
 class AdoptionsController < ApplicationController
-
   def new
     @pet = Pet.find(params[:pet_id])
     @adoption = Adoption.new
@@ -18,10 +17,13 @@ class AdoptionsController < ApplicationController
     end
   end
 
-  def all_adoptions
-    @user = User.where(email: params[:email])
-    @all_adoptions = Adoption.where(user_id: @user[:id])
-  end
+  # def reply_request
+  #   @adoption = Adoption.find(params[:id])
+  #   @message = params[:reply_message]
+  #   mail = UserMailer.with(message: @message, adoption: @adoption).reply
+  #   mail.deliver_now
+  #   redirect_to user_adoption_show_path notice: "reply sent"
+  # end
 
   private
 

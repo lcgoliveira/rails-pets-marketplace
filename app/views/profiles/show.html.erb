@@ -1,32 +1,84 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://placedog.net/640/480?random);">
-  <div class="container">
-        <p><%=current_user.first_name%></p>
-         <p><%=current_user.last_name%></p>
-         <p><%=current_user.date_of_birth%></p>
-         <p><%=current_user.address%></p>
-         <p><%=current_user.email%></p>
-    <a class="btn btn-flat" href="#">Adopt a pet!</a>
-    <p>  </p>
-    <%= button_to "previous adoptions", user_all_adoptions_path(current_user), method: :get, class: "btn btn-flat" %>
+
+<div class="container text center" style="background-image: url(https://placedog.net/640/480?random); background-size: cover;">
+  <div class="container col-2 d-flex justify-content-center align-items-center flex-column">
+    <%= image_tag "#{current_user.photo.attached? ? "#{cl_image_path current_user.photo.key, crop: :fill}" : 'https://source.unsplash.com/eRDnW-NzbKc/1600x900'}", class: "avatar-very-large-bordered m-2" %>
+    <div class="d-flex justify-content-space-around">
+      <a class="btn btn-light m-3" href="/users/edit">Edit profile</a>
+      <a class="btn btn-flat m-3" href="/">Adopt a pet!</a>
+      <a class="btn btn-flat m-3" href="/pets/new">Donate a pet!</a>
+      <a class="btn btn-flat m-3" href=<%="/users/#{current_user.id}/all_adoptions"%>>Previous adoptions</a>
+    </div>
   </div>
 </div>
 
- <div class="container d-flex justify-content-around flex-wrap show my-5">
-   <% @user.pets.each do |pet| %>
-    <div class="card text-dark mb-3" id="card-description" style="max-width: 30rem;">
-      <div class="card-body">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pet.photo.key, height: 300, crop: :fill if pet.photo.attached? %>')">
+<hr>
+
+<div class="border border-dark rounded my-4 shadow">
+  <h2 class="m-3 text-center">About <%= current_user.first_name.capitalize %></h2>
+  <hr>
+  <ul>
+    <li><p class="m-3"><strong>First name: </strong><%=current_user.first_name%></p></li>
+    <li><p class="m-3"><strong>Last name: </strong><%=current_user.last_name%></p></li>
+    <li><p class="m-3"><strong>Date of birth: </strong><%=current_user.date_of_birth%></p></li>
+    <li><p class="m-3"><strong>Address: </strong><%=current_user.address%></p></li>
+    <li><p class="m-3"><strong>Email: </strong><%=current_user.email%></p></li>
+    <li><p class="m-3"><strong>User description: </strong><%=current_user.description%></p></li>
+  </ul>
 </div>
-        <h3 class="card-title">Pet</h3>
-        <div class="d-flex flex-column bd-highlight">
-         <p><%=pet.animal_type%></p>
-         <p><%=pet.description%></p>
-         <p><%=pet.name%></p>
-         <p><%=pet.age%></p>
-    <a class="btn btn-flat" href="#">Select a pet!</a>
-        </div>
+<hr class="m-3">
+  <div>
+    <% if @pets_adoptions.empty? %>
+      <div class="alert alert-secondary" role="alert">You do not have any pending adoption requests.</div>
+    <% else %>
+      <div class="container" style="mt-3">
+        <p> </p>
+        <p> </p>
+        <p> </p>
+        <div class="alert alert-danger" role="alert">You have a pending adoption request!</div>
+        <p class="h4">Pending adoption requests</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">pet name</th>
+              <th scope="col">requested by</th>
+              <th scope="col">e-mail</th>
+              <th scope="col">message</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @pets_adoptions.each do |pet_adoption| %>
+              <% pet_adoption.each do |adoption| %>
+                <tr>
+                  <td><%= adoption.pet.name %></td>
+                  <td><%= adoption.user.first_name %></td>
+                  <td><%= adoption.user.email %></td>
+                  <td><%= adoption.content %></td>
+                  <td><%= link_to "check request", user_adoption_show_path(user_id: adoption.id), method: :get %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+
+
+<div class="border border-dark rounded my-4 shadow">
+  <h2 class="m-3 text-center"><%= current_user.first_name.capitalize %>'s Pets for adoption!</h2>
+  <hr>
+  <div class="container my-3">
+    <div class="cards">
+      <% @user.pets.each do |pet| %>
+        <a href="<%= " /pets/#{pet.id}" %>">
+          <div class="card-category"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pet.photo.key, height: 300, crop: :fill if pet.photo.attached? %>')">
+            <%= pet.name %>
+          </div>
+        </a>
+        <% end %>
     </div>
   </div>
-  <%end%>
- </div>
+</div>
 

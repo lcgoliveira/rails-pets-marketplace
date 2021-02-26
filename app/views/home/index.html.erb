@@ -6,11 +6,12 @@
         <p>
           <span id="banner-typed-text"></span>
         </p>
-        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary"  %>
+        <% unless user_signed_in?  %>
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-flat"  %>
+        <% end  %>
       </div>
     </div>
   </div>
-
   <div class="py-1">
     <% @pets.each do |pet| %>
       <div class="card-trip py-2 my-2">
