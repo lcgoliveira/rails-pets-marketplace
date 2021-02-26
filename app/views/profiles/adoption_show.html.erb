@@ -1,6 +1,6 @@
-<div class="container mt-2>
+<div style="margin-top: 30px;">
   <% if @adoption.user.first_name != nil  %>
-    <h4>Adoption request by <%= @adoption.user.first_name %></h4>
+    <h4>Adoption request by <%= @adoption.user.first_name %>:</h4>
   <% else %>
     <h4>Adoption request by <%= @adoption.user.email %>"</h4>
   <% end %>
@@ -25,7 +25,6 @@
   </div>
 </div>
 
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -48,4 +47,5 @@
       <% end %>
     </div>
   </div>
+
 </div>
