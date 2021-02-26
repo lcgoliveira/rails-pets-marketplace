@@ -1,31 +1,32 @@
-<div class="container mt-3">
+<div class="container mt-4">
   <h4> <%= "All pets offered for adoption by #{@user.first_name} #{@user.last_name}:" %></h4>
-  <p></p>
-  <p></p>
-  <% if @user.adoptions.empty? %>
-    <p><%= "There have been no prior adoptions by #{@user.email}" %></p>
+  <p></p><p></p><p></p>
+  <% if @adoptions.empty? %>
+    <p><%= "There were no prior adoptions by #{@user.first_name} #{@user.last_name}" %></p>
   <% else %>
     <table class="table">
       <thead class="bg-success">
         <tr>
-          <th scope="col">pet name:</th>
-          <th scope="col">pet type:</th>
-          <th scope="col">adoption offered on:</th>
-          <th scope="col">adoption requested by:</th>
-          <th scope="col">adoption status:</th>
-          <th scope="col">adoption date:</th>
+          <th scope="col" style="text-align: center;">pet:</th>
+          <th scope="col" style="text-align: center;">type:</th>
+          <th scope="col" style="text-align: center;">offered on:</th>
+          <th scope="col" style="text-align: center;">adoptor:</th>
+          <th scope="col" style="text-align: center;">adoptor`s e-mail:</th>
+          <th scope="col" style="text-align: center;">adoption status:</th>
+          <th scope="col" style="text-align: center;">adoption date:</th>
         </tr>
       </thead>
       <tbody>
-        <% @user.adoptions.each do |adoption| %>
+        <% @adoptions.each do |adoption| %>
           <% if adoption.concluded? %>
             <tr>
-            <td><%= adoption.pet.name %></td>
-            <td><%= adoption.pet.animal_type %></td>
-            <td><%= adoption.created_at %></td>
-            <td><%= adoption.user.first_name %></td>
-            <td><%= adoption.status %></td>
-            <td><%= adoption.concluded_at %></td>
+            <td style="text-align: center;"><%= adoption.pet.name %></td>
+            <td style="text-align: center;"><%= adoption.pet.animal_type %></td>
+            <td style="text-align: center;"><%= adoption.created_at %></td>
+            <td style="text-align: center;"><%= adoption.user.first_name %> <%= adoption.user.last_name %></td>
+            <td style="text-align: center;"><%= adoption.user.email %></td>
+            <td style="text-align: center;"><%= adoption.status %></td>
+            <td style="text-align: center;"><%= adoption.concluded_at %></td>
             </tr>
           <% end %>
         <% end %>
@@ -34,7 +35,9 @@
   <% end %>
   <p></p>
   <p></p>
-  <%= button_to "back", user_path(@user), method: :get, class: "btn btn-success", style: "width: 160px;"%>
+  <%= link_to profiles_path do %>
+    <div class="btn btn-success", style="width: 160px">back</div>
+  <% end %>
 </div>
 
 

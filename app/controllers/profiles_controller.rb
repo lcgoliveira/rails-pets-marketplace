@@ -6,7 +6,9 @@ class ProfilesController < ApplicationController
   end
 
   def all_adoptions
-    @user = User.find(params[:user_id])
+    @user = current_user
+    @pets = Pet.where(user_id: @user)
+    @adoptions = Adoption.where(pet_id: @pets).where.not(status: 'open')
   end
 
   def adoption_show
