@@ -1,7 +1,4 @@
-<div class="container col-10">
   <%= simple_form_for [@pet, @adoption], url: pet_adoptions_path do |f| %>
-    <%= f.label :content, "Please write a message to #{@pet.name}`s owner asking to adopt #{@pet.name}.\n #{@pet.name}`s owner will get back to you shortly by either (i) directly responding to your message, asking for more information; (ii) approving your adoption request; or (iii) refusing your adoption request." %>
-    <%= f.input :content, as: :text, label: false %>
-    <div style="display: flex; justify-content: center;"><%= f.submit "request adoption", class: "btn btn-success", style: "width: 200px; text-center;" %></div>
+    <%= f.input :content, as: :text %>
+    <%= f.submit "Solicitar adoção", class: "btn btn-success" %>
   <% end %>
-</div>

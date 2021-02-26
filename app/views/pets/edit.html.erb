@@ -8,13 +8,13 @@
                     </div>
                 </div>
                 <%= simple_form_for(@pet) do |f| %>
-                  <%= f.input :animal_type %>
-                  <%= f.input :name %>
-                  <%= f.input :age %>
-                  <%= f.input :description %>
-                  <%= f.input :photo, as: :file %>
-                  <div style="display: flex; justify-content: center"><%= f.submit "save", class: "btn btn-flat", style: "width: 160px;" %></div>
-                <% end %>
+                    <%= f.input :animal_type %>
+                        <%= f.input :name %>
+                            <%= f.input :age %>
+                                <%= f.input :description %>
+                                    <%= f.input :photo, as: :file %>
+                                        <%= f.submit "Edite meu pet", class: "btn btn-success" %>
+                                            <% end %>
             </div>
         </div>
     </div>

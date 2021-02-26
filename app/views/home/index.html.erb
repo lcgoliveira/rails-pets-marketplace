@@ -1,14 +1,17 @@
-<div class="container mt-3">
-    <div class="container mt-3">
+<div class="container mt-3" >
+    <div class="container mt-3" >
     <div class="banner"
       style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/3628100/pexels-photo-3628100.jpeg?cs=srgb&dl=pexels-eddie-galaxy-3628100.jpg&fm=jpg);">
       <div class="container">
-        <p>
+        <p class="text-right"> Help thousands of pets find a new home</p>
+        <p class="text-right">
           <span id="banner-typed-text"></span>
         </p>
+        <p id="btnbanner" class="text-center">
         <% unless user_signed_in?  %>
-          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-flat"  %>
+          <%= link_to "Join this community today", new_user_registration_path, class: "btn btn-success"  %>
         <% end  %>
+        </p>
       </div>
     </div>
   </div>
@@ -24,4 +27,3 @@
         <% end %>
     </div>
   </div>
-</div>
