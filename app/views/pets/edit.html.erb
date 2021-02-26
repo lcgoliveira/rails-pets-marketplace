@@ -4,20 +4,16 @@
             <div class="card p-3">
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <h2 class="heading text-center center">
-                            Pet informations editor
-                        </h2>
+                        <h2 class="heading text-center center" style="color: rgb(40,40,40);">edit pet profile:</h2>
                     </div>
                 </div>
-                <h2 class="heading text-center">Editing pet: <%= @pet.name %>
-                </h2>
                 <%= simple_form_for(@pet) do |f| %>
                   <%= f.input :animal_type %>
                   <%= f.input :name %>
                   <%= f.input :age %>
                   <%= f.input :description %>
                   <%= f.input :photo, as: :file %>
-                  <%= f.submit "Edite meu pet", class: "btn btn-flat" %>
+                  <div style="display: flex; justify-content: center"><%= f.submit "save", class: "btn btn-flat", style: "width: 160px;" %></div>
                 <% end %>
             </div>
         </div>

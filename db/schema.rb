@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_234541) do
+ActiveRecord::Schema.define(version: 2021_02_26_011418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2021_02_25_234541) do
   create_table "adoptions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "pet_id", null: false
-    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "concluded", default: false
