@@ -7,10 +7,8 @@
           <div class="col-12">
             <h1 class="heading text-center">Hello, I`m: <%= @pet.name.capitalize %>!</h1>
 
-            <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @pet.photo.key, crop: :fill, gravity: :face if @pet.photo.attached? %>);">
-              <div class="container">
-                <h1 style="color: grey; text-align: center">meet <%= @pet.name %> </h1>
-              </div>
+            <div class="container d-flex justify-content-center">
+              <%= image_tag "#{@pet.photo.attached? ? "#{cl_image_path @pet.photo.key, crop: :fill}" : 'default pet photo.jpg'}", class: "avatar-very-large-bordered m-2" %>
             </div>
             <p></p>
             <h5>about <%= @pet.name.capitalize %>:</h5>
@@ -21,18 +19,6 @@
               <li class="list-group-item">age: <%= @pet.age %></li>
               <li class="list-group-item">more: <%= @pet.description %></li>
             </ul>
-
-            <% if current_user = @pet.user %>
-              <div style="display: flex; justify-content: space-evenly; align-items: center;">
-                <%= link_to "back", root_path, class: "btn btn-success", style: "width: 100px; margin: 15px;" %>
-                <%= link_to "edit", edit_pet_path(@pet.id), class: "btn btn-success", style: "width: 100px; margin: 15px;" %>
-            <% else %>
-              <div style="display: flex; justify-content: space-evenly; align-items: center;">
-                <%= link_to "adopt", new_pet_adoption_path(pet_id: @pet.id), class: "btn btn-success", style: "width: 100px; margin: 15px;" %>
-                <%= link_to "back", root_path, class: "btn btn-success", style: "width: 100px; margin: 15px;" %>
-                <%= link_to "edit", edit_pet_path(@pet.id), class: "btn btn-success", style: "width: 100px; margin: 15px;" %>
-              <% end %>
-              </div>
           </div>
         </div>
       </div>
