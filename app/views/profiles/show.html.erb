@@ -68,7 +68,7 @@
 <div class="border border-dark rounded my-4 shadow">
   <h2 class="m-3 text-center"><%= current_user.first_name.capitalize %>'s Pets for adoption!</h2>
   <hr>
-  <div class="container m-5">
+  <div class="container my-3">
     <div class="cards">
       <% @user.pets.each do |pet| %>
         <a href="<%= " /pets/#{pet.id}" %>">
