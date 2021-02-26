@@ -1,7 +1,7 @@
-<div class="container mt-1">
-  <div class="container mt-1">
+<div class="container mt-3">
+    <div class="container mt-3">
     <div class="banner"
-      style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://placedog.net/640/480?random);">
+      style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/3628100/pexels-photo-3628100.jpeg?cs=srgb&dl=pexels-eddie-galaxy-3628100.jpg&fm=jpg);">
       <div class="container">
         <p>
           <span id="banner-typed-text"></span>
@@ -12,19 +12,15 @@
       </div>
     </div>
   </div>
-  <div class="py-1">
-    <% @pets.each do |pet| %>
-      <div class="card-trip py-2 my-2">
-        <img class="image-cover" src="<%= cl_image_path pet.photo.key %>"/>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%=pet.animal_type%></h2>
-            <p><%=pet.description%></p>
+  <div class="container mt-5">
+    <div class="cards">
+      <% @pets.each do |pet| %>
+        <a href="<%= " /pets/#{pet.id}" %>">
+          <div class="card-category"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pet.photo.key, height: 300, crop: :fill if pet.photo.attached? %>')">
+            <%= pet.name %>
           </div>
-          <h2 class="card-trip-pricing"><%="#{pet.user.first_name} - #{pet.user.address}"%></h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-        </div>
-      </div>
-    <% end %>
+        </a>
+        <% end %>
+    </div>
   </div>
-</div>
