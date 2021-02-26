@@ -1,6 +1,6 @@
-<div class="container mt-2>
+<div style="margin-top: 30px;">
   <% if @adoption.user.first_name != nil  %>
-    <h4>Adoption request by <%= @adoption.user.first_name %></h4>
+    <h4>Adoption request by <%= @adoption.user.first_name %>:</h4>
   <% else %>
     <h4>Adoption request by <%= @adoption.user.email %>"</h4>
   <% end %>
@@ -10,21 +10,20 @@
     <li class="list-group-item">Request initiated by: <%= @adoption.user.first_name %> <%= @adoption.user.first_name %></li>
     <li class="list-group-item">e-mail: <%= @adoption.user.email %></li>
     <li class="list-group-item">Date of request: <%= @adoption.created_at %></li>
-    <li class="list-group-item">Message: <%@adoption.content%></li>
+    <li class="list-group-item">Message: <%= @adoption.content %></li>
   </ul>
 </div>
 <div class="container mt-2">
   <div class="container_adoption_show">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="width: 180px;">reply</button>
-    <%= link_to user_adoption_confirm_path(id: @adoption.id), method: :post do %>
+    <%= link_to user_adoption_confirm_path(current_user, @adoption.id), method: :post do %>
       <div class="btn btn-success", style="width: 180px">confirm adoption</div>
     <% end %>
-    <%= link_to user_adoption_refuse_path(id: @adoption.id), method: :post do %>
+    <%= link_to user_adoption_refuse_path(current_user, @adoption.id), method: :post do %>
       <div class="btn btn-danger", style="width: 180px">refuse adoption</div>
     <% end %>
   </div>
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -48,4 +47,5 @@
       <% end %>
     </div>
   </div>
+
 </div>

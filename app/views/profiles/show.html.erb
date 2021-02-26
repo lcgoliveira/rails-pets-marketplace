@@ -25,44 +25,44 @@
     <li><p class="m-3"><strong>User description: </strong><%=current_user.description%></p></li>
   </ul>
 </div>
-<hr class="m-3">
-  <div class="border border-dark rounded my-4 shadow">
-      <div class="container" style="mt-3">
-          <h4 class="m-3 text-center">pending adoption requests</h4>
-          <table class="table">
-            <% if @pets_adoptions.empty? %>
-              <p style="text-align: center">--currently, there are no pending adoption requests for <%= current_user.first_name.capitalize %>--</p>
-            <% else %>
-              <p style="text-align: center; color: red; font-weight: bolder;"><strong>--You received an adoption resquest!--</strong></p>
-              <thead>
-                <tr>
-                  <th scope="col">pet name</th>
-                  <th scope="col">requested by</th>
-                  <th scope="col">e-mail</th>
-                  <th scope="col">message</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @pets_adoptions.each do |pet_adoption| %>
-                  <% pet_adoption.each do |adoption| %>
-                    <tr>
-                      <td><%= adoption.pet.name %></td>
-                      <td><%= adoption.user.first_name %></td>
-                      <td><%= adoption.user.email %></td>
-                      <td><%= adoption.content %></td>
-                      <td><%= link_to "check request", user_adoption_show_path(user_id: adoption.id), method: :get %></td>
-                    </tr>
-                  <% end %>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-    <% end %>
-  </div>
 
 <div class="border border-dark rounded my-4 shadow">
-  <h4 class="m-3 text-center">pets offered by <%= current_user.first_name.capitalize %></h2>
+  <div class="container" style="mt-3">
+    <h4 class="m-3 text-center">pending adoption requests</h4>
+    <hr>
+    <% if @pets_adoptions.empty? %>
+      <p style="text-align: center">--currently, there are no pending adoption requests for <%= current_user.first_name.capitalize %>--</p>
+      </div>
+    <% else %>
+      <table class="table">
+        <p style="text-align: center; color: red; font-weight: bolder;"><strong>--You received an adoption resquest!--</strong></p>
+        <thead>
+          <tr>
+            <th scope="col">pet name</th>
+            <th scope="col">requested by</th>
+            <th scope="col">e-mail</th>
+            <th scope="col">message</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pets_adoptions.each do |adoption| %>
+              <tr>
+                <td><%= adoption.pet.name %></td>
+                <td><%= adoption.user.first_name %></td>
+                <td><%= adoption.user.email %></td>
+                <td><%= adoption.content %></td>
+                <td><%= link_to "check request", user_adoption_show_path(user_id: adoption.id), method: :get %></td>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+<div class="border border-dark rounded my-4 shadow">
+  <h4 class="m-3 text-center">pets offered by <%= current_user.first_name.capitalize %></h4>
   <hr>
   <% if @user.pets.empty? %>
     <p style="text-align: center">--currently, no pets are in offer by <%= current_user.first_name.capitalize %>--</p>

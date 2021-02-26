@@ -6,7 +6,9 @@ class ProfilesController < ApplicationController
   end
 
   def all_adoptions
-    @user = User.find(params[:user_id])
+    @user = current_user
+    @pets = Pet.where(user_id: @user)
+    @adoptions = Adoption.where(pet_id: @pets).where.not(status: 'open')
   end
 
   def adoption_show
@@ -48,10 +50,8 @@ class ProfilesController < ApplicationController
   private
 
   def set_adoption_requests
-    pets = current_user.pets
-    @pets_adoptions = pets.map do |pet|
-      Adoption.where("pet_id = ? AND status = ?", pet[:id], 'open')
-    end
+    pets = current_user.pet_ids
+    @pets_adoptions = Adoption.where(pet_id: pets, status: 'open')
   end
 
   def adoption_params
