@@ -1,16 +1,25 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://placedog.net/640/480?random);">
-  <div class="container">
-        <p><%=current_user.first_name%></p>
-         <p><%=current_user.last_name%></p>
-         <p><%=current_user.date_of_birth%></p>
-         <p><%=current_user.address%></p>
-         <p><%=current_user.email%></p>
-         <p><%=current_user.description%></p>
-    <a class="btn btn-flat" href="#">Adopt a pet!</a>
-    <p>  </p>
-    <%= button_to "previous adoptions", user_all_adoptions_path(current_user), method: :get, class: "btn btn-flat" %>
+<div class="pseudo-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://placedog.net/640/480?random);">
+  <div class="container col-2 d-flex justify-content-center align-items-center flex-column">
+    <%= image_tag "#{current_user.photo.attached? ? "#{cl_image_path current_user.photo.key, crop: :fill}" : 'https://source.unsplash.com/eRDnW-NzbKc/1600x900'}", class: "avatar-very-large-bordered m-2" %>
+    
+    <div class="d-flex justify-content-space-around">
+      <a class="btn btn-light m-3" href="/users/edit">Edit profile</a>
+      <a class="btn btn-flat m-3" href="/">Adopt a pet!</a>
+      <a class="btn btn-flat m-3" href=<%="/users/#{current_user.id}/all_adoptions"%>>Adopt a pet!</a>
+    </div>
+
+  </div>
+  <div class="container d-flex flex-column justify-content-start align-items start flex-wrap">
   </div>
 </div>
+        <ul>
+          <li><p class="m-3"><strong>First name: </strong><%=current_user.first_name%></p></li>
+          <li><p class="m-3"><strong>Last name: </strong><%=current_user.last_name%></p></li>
+          <li><p class="m-3"><strong>Date of birth: </strong><%=current_user.date_of_birth%></p></li>
+          <li><p class="m-3"><strong>Address: </strong><%=current_user.address%></p></li>
+          <li><p class="m-3"><strong>Email: </strong><%=current_user.email%></p></li>
+          <li><p class="m-3"><strong>User description: </strong><%=current_user.description%></p></li>
+        </ul>
 
  <div class="container d-flex justify-content-around flex-wrap show my-5">
    <% @user.pets.each do |pet| %>
