@@ -50,7 +50,7 @@ class ProfilesController < ApplicationController
   def set_adoption_requests
     pets = current_user.pets
     @pets_adoptions = pets.map do |pet|
-      Adoption.where(pet_id: pet[:id])
+      Adoption.where("pet_id = ? AND status = ?", pet[:id], 'open')
     end
   end
 

@@ -5,18 +5,16 @@
       <div class="card p-3">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h2 class="heading text-center">
-              Do you want to donate a pet ?<strong
-                >You're in the right place</strong
-              >
-            </h2>
+            <h2 class="heading text-center">Do have a pet to donate?</h2>
+            <h4 class="heading text-center"><strong>You're in the right place</strong></h4>
           </div>
         </div>
-        <%= simple_form_for(@pet) do |f| %> <%= f.input :animal_type %> <%=
-
-        f.input :name %> <%= f.input :age %> <%= f.input :description %> <%=
-        f.submit "Anunciar pet", class: "btn btn-flat" %> <% end %>
-
+        <%= simple_form_for(@pet) do |f| %> <%= f.input :animal_type %>
+          <%=f.input :name %>
+          <%= f.input :age %>
+          <%= f.input :description %>
+          <div style="display: flex; justify-content: center;"><%=f.submit "post", class: "btn btn-success", style: "width: 160px;"%></div>
+        <% end %>
       </div>
     </div>
   </div>
