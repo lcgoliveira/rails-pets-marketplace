@@ -1,4 +1,4 @@
   <%= simple_form_for [@pet, @adoption], url: pet_adoptions_path do |f| %>
     <%= f.input :content, as: :text %>
-    <%= f.submit "Solicitar adoção" %>
+    <%= f.submit "Solicitar adoção", class: "btn btn-success" %>
   <% end %>

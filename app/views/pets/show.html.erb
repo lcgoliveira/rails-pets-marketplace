@@ -19,11 +19,11 @@
               <li class="list-group-item">age: <%= @pet.age %></li>
               <li class="list-group-item">more: <%= @pet.description %></li>
             </ul>
-
+            
             <div style="display: flex; justify-content: space-evenly; align-items: center;">
-              <%= link_to "adopt", new_pet_adoption_path(pet_id: @pet.id), class: "btn btn-success", style: "width: 100px; margin: 15px;" %>
+              <%= link_to "adopt", new_pet_adoption_path(pet_id: @pet.id), class: "btn btn-success my-3", style: "width: 100px; margin: 15px;" %>
               <a class="btn btn-success", style="width: 100px; margin: 15px;" onclick="history.back(-1)">Back</a>
-              <%= link_to "edit", edit_pet_path(@pet.id), class: "btn btn-success", style: "width: 100px; margin: 15px;" %>
+              <%= link_to "edit", edit_pet_path(@pet.id), class: "btn btn-success my-3", style: "width: 100px; margin: 15px;" %>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 
+
 <div class="container text center" style="background-image: url(https://placedog.net/640/480?random); background-size: cover;">
   <div class="container col-2 d-flex justify-content-center align-items-center flex-column">
     <%= image_tag "#{current_user.photo.attached? ? "#{cl_image_path current_user.photo.key, crop: :fill}" : 'https://source.unsplash.com/eRDnW-NzbKc/1600x900'}", class: "avatar-very-large-bordered m-2" %>
