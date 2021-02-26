@@ -17,6 +17,7 @@
           <%= f.input :doc_cpf, required: true, autofocus: true, placeholder: "Somente números" %>
           <%= f.input :description, required: true, autofocus: true, placeholder: "Sou o Ronaldo, brilho muito no <insira seu time>" %>
           <%= f.input :address, required: true, autofocus: true, placeholder: "Rua brilhante N 123" %>
+          <%= f.input :photo, as: :file %>
           <%= f.input :email, required: true, autofocus: true, input_html: {
           autocomplete: "email" }, placeholder: "ronaldo@vfootbal.com.br" %>
           <%= f.input :password, required: true,
