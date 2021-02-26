@@ -3,9 +3,9 @@
   <div class="container col-2 d-flex justify-content-center align-items-center flex-column">
     <%= image_tag "#{current_user.photo.attached? ? "#{cl_image_path current_user.photo.key, crop: :fill}" : 'https://source.unsplash.com/eRDnW-NzbKc/1600x900'}", class: "avatar-very-large-bordered m-2" %>
     <div class="d-flex justify-content-space-around">
-      <a class="btn btn-light m-3" href="/users/edit">Edit profile</a>
-      <a class="btn btn-flat m-3" href="/">Adopt a pet!</a>
-      <a class="btn btn-flat m-3" href=<%="/users/#{current_user.id}/all_adoptions"%>>Previous adoptions</a>
+      <a class="btn btn-success m-3" href="/users/edit" style="width: 100px">Edit profile</a>
+      <a class="btn btn-success m-3" href="/" style="width: 100px">Adopt a pet!</a>
+      <a class="btn btn-success m-3" href=<%="/users/#{current_user.id}/all_adoptions"%> style="width: 100px">Previous adoptions</a>
     </div>
   </div>
 </div>
@@ -63,21 +63,24 @@
     <% end %>
   </div>
 
-
 <div class="border border-dark rounded my-4 shadow">
-  <h2 class="m-3 text-center"><%= current_user.first_name.capitalize %>'s Pets for adoption!</h2>
+  <h4 class="m-3 text-center">pets offered by <%= current_user.first_name.capitalize %></h2>
   <hr>
-  <div class="container m-5">
-    <div class="cards">
-      <% @user.pets.each do |pet| %>
-        <a href="<%= " /pets/#{pet.id}" %>">
-          <div class="card-category"
-            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pet.photo.key, height: 300, crop: :fill if pet.photo.attached? %>')">
-            <%= pet.name %>
-          </div>
-        </a>
-        <% end %>
+  <% if @user.pets.empty? %>
+    <p style="text-align: center">--currently, no pets are in offer by <%= current_user.first_name.capitalize %>--</p>
+  <% else %>
+    <div class="container m-5">
+      <div class="cards">
+        <% @user.pets.each do |pet| %>
+          <a href="<%= " /pets/#{pet.id}" %>">
+            <div class="card-category"
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pet.photo.key, height: 300, crop: :fill if pet.photo.attached? %>')">
+              <%= pet.name %>
+            </div>
+          </a>
+          <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 

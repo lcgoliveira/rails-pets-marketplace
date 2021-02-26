@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show update destroy]
+  before_action :spot_user, only: %i[edit]
 
   def index
     @users = User.all.shuffle
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
   # device funcionality (new and create)
 
   def edit
-    @user = set_user
+    @user = spot_user
   end
 
   def update
@@ -33,6 +34,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def spot_user
+    @user = User.find(params[:id])
   end
 
   def user_params
